@@ -25,4 +25,4 @@ jobs:
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
-          python your_script.py
+          python update_gold.py
