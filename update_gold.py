@@ -5,8 +5,9 @@ import os
 from github import Github
 
 # ==== CONFIG ====
+# Read GitHub token from environment (GitHub Actions) or userdata (local Colab)
+GITHUB_TOKEN = os.getenv("MY_GITHUB_TOKEN") or userdata.get("MY_GITHUB_TOKEN")
 GITHUB_USER = "andy-nguyen-21"
-GITHUB_TOKEN = userdata.get('GITHUB_TOKEN')
 REPO_NAME = "gold-market-data-vietnam"
 FILE_PATH = "sjc_gold_prices.csv"
 
