@@ -1,0 +1,28 @@
+name: Update Gold Prices
+
+on:
+  schedule:
+    - cron: "0 9 * * *"   # Runs every day at 09:00 UTC
+  workflow_dispatch:       # Allows you to run manually too
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests PyGithub
+
+      - name: Run script
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          python your_script.py
