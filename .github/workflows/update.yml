@@ -3,7 +3,7 @@ name: Update Gold Prices
 on:
   schedule:
     - cron: "0 9 * * *"   # Runs every day at 09:00 UTC
-  workflow_dispatch:       # Allows you to run manually too
+  workflow_dispatch:       # Allows manual run
 
 jobs:
   update:
@@ -19,10 +19,9 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install requests PyGithub
+        run: pip install requests pandas PyGithub
 
-      - name: Run script
+      - name: Run update script
         env:
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-        run: |
-          python update_gold.py
+        run: python update_gold.py
